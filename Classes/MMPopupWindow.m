@@ -62,12 +62,14 @@ UIGestureRecognizerDelegate
 {
     if ( self.touchWildToHide && !self.mm_dimBackgroundAnimating )
     {
-        for ( UIView *v in [self attachView].mm_dimBackgroundView.subviews )
+        for ( MMPopupView *v in [self attachView].mm_dimBackgroundView.subviews )
         {
-            if ( [v isKindOfClass:[MMPopupView class]] )
+            if ( [v isKindOfClass:[MMPopupView class]] && !v.disableTouchToHide)
             {
-                MMPopupView *popupView = (MMPopupView*)v;
-                [popupView hide];
+                [v hide];
+                if (v.touchToHideBlock) {
+                    v.touchToHideBlock(v);
+                }
             }
         }
     }

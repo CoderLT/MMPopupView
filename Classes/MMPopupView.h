@@ -38,6 +38,8 @@ typedef void(^MMPopupCompletionBlock)(MMPopupView *, BOOL);
 
 @property (nonatomic, copy            ) MMPopupBlock   showAnimation;       // custom show animation block.
 @property (nonatomic, copy            ) MMPopupBlock   hideAnimation;       // custom hide animation block.
+@property (nonatomic, assign) BOOL disableTouchToHide; // default is NO. When YES, popup views will be hidden when user touch the translucent background.
+@property (nonatomic, copy            ) MMPopupBlock   touchToHideBlock;       // custom show animation block.
 
 /**
  *  override this method to show the keyboard if with a keyboard

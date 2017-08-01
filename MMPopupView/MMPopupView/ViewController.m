@@ -125,7 +125,7 @@ UITableViewDataSource
         case 1:
         {
             MMAlertView *alertView = [[MMAlertView alloc] initWithConfirmTitle:@"AlertView" detail:@"Confirm Dialog"];
-            alertView.attachedView = self.view;
+//            alertView.attachedView = self.view;
             alertView.attachedView.mm_dimBackgroundBlurEnabled = YES;
             alertView.attachedView.mm_dimBackgroundBlurEffectStyle = UIBlurEffectStyleDark;
             [alertView showWithBlock:completeBlock];
