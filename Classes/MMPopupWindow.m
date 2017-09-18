@@ -60,11 +60,11 @@ UIGestureRecognizerDelegate
 
 - (void)actionTap:(UITapGestureRecognizer*)gesture
 {
-    if ( self.touchWildToHide && !self.mm_dimBackgroundAnimating )
+    if ( !self.mm_dimBackgroundAnimating )
     {
         for ( MMPopupView *v in [self attachView].mm_dimBackgroundView.subviews )
         {
-            if ( [v isKindOfClass:[MMPopupView class]] && !v.disableTouchToHide)
+            if ( [v isKindOfClass:[MMPopupView class]] && v.touchWildToHide)
             {
                 [v hide];
                 if (v.touchToHideBlock) {
@@ -85,4 +85,26 @@ UIGestureRecognizerDelegate
     return self.rootViewController.view;
 }
 
+#pragma mark - autorotate
+- (UIViewController *)preferredVC {
+    return [[[UIApplication sharedApplication] delegate] window].rootViewController;
+}
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return [[self preferredVC] preferredStatusBarStyle];
+}
+- (BOOL)prefersStatusBarHidden {
+    return [[self preferredVC] prefersStatusBarHidden];
+}
+- (UIStatusBarAnimation)preferredStatusBarUpdateAnimation {
+    return [[self preferredVC] preferredStatusBarUpdateAnimation];
+}
+- (BOOL)shouldAutorotate {
+    return [[self preferredVC] shouldAutorotate];
+}
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    return [[self preferredVC] supportedInterfaceOrientations];
+}
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
+    return [[self preferredVC] preferredInterfaceOrientationForPresentation];
+}
 @end

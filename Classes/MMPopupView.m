@@ -33,6 +33,7 @@ static NSString * const MMPopupViewHideAllNotification = @"MMPopupViewHideAllNot
     self.type = MMPopupTypeAlert;
     self.animationDuration = 0.3f;
     self.attachedView = [MMPopupWindow sharedWindow].attachView;
+    self.touchWildToHide = MMPopupView.touchWildToHide;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifyHideAll:) name:MMPopupViewHideAllNotification object:nil];
 }
@@ -394,4 +395,12 @@ static NSString * const MMPopupViewHideAllNotification = @"MMPopupViewHideAllNot
     
 }
 
+#pragma mark - class
+static BOOL _touchWildToHide = NO;
++ (void)setTouchWildToHide:(BOOL)touchWildToHide {
+    _touchWildToHide = touchWildToHide;
+}
++ (BOOL)touchWildToHide {
+    return _touchWildToHide;
+}
 @end

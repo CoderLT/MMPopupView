@@ -51,7 +51,7 @@ UITableViewDataSource
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     
 //    [[MMPopupWindow sharedWindow] cacheWindow];
-    [MMPopupWindow sharedWindow].touchWildToHide = YES;
+    MMPopupView.touchWildToHide = YES;
     
     MMAlertViewConfig *alertConfig = [MMAlertViewConfig globalConfig];
     MMSheetViewConfig *sheetConfig = [MMSheetViewConfig globalConfig];
